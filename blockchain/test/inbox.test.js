@@ -8,6 +8,8 @@ const web3 = new Web3(ganache.provider());
 let accounts;
 let inbox;
 let INITIAL_MESSAGE = 'Hi There!';
+let INITIAL_MESSAGE_CHANGED = 'Hello!';
+
 beforeEach(async () => {
     //Get a List of all accounts async
     accounts = await web3.eth.getAccounts();
@@ -33,4 +35,11 @@ it('describes accounts', () => {
 it('has a default message', async() => {
     const message = await inbox.methods.message().call();
     assert.equal(message, INITIAL_MESSAGE);
+});
+
+it('can change the message', async() => {
+    await inbox.methods.setMessage(INITIAL_MESSAGE_CHANGED).send({from: accounts[0]});
+    const message = await inbox.methods.message().call();
+    assert.equal(message, INITIAL_MESSAGE_CHANGED);
+    // console.log(message);
 });

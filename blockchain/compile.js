@@ -23,9 +23,9 @@ const input = {
 
 // console.log(JSON.parse(solc.compile(JSON.stringify(input))).contracts['inbox.sol'].Inbox);
 
-const { abi: interface, evm: { bytecode: { object } } } =JSON.parse(solc.compile(JSON.stringify(input))).contracts['inbox.sol'].Inbox;
+const { abi: AbiInterface, evm: { bytecode: { object: ByteCodeObject } } } =JSON.parse(solc.compile(JSON.stringify(input))).contracts['inbox.sol'].Inbox;
 
-//console.log(interface);
-// console.log(object);
+// console.log(AbiInterface);
+// console.log(ByteCodeObject);
 
-module.exports = {interface, object}; 
+module.exports = {AbiInterface, ByteCodeObject}; 

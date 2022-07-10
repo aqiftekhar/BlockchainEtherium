@@ -12,6 +12,9 @@ beforeEach(async () => {
     //Get a List of all accounts async
     accounts = await web3.eth.getAccounts();
 
+    // console.log(AbiInterface);
+    // console.log(ByteCodeObject);
+
     //Use one of those account to deploy the contract
     inbox = await new web3.eth.Contract(AbiInterface)
             .deploy({data: ByteCodeObject, arguments: ['Hi There!']})

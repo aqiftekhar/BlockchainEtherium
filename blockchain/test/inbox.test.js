@@ -5,6 +5,8 @@ const {AbiInterface, ByteCodeObject } = require('../compile');
 
 const web3 = new Web3(ganache.provider());
 
+
+
 let accounts;
 let inbox;
 let INITIAL_MESSAGE = 'Hi There!';

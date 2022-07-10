@@ -7,7 +7,7 @@ const web3 = new Web3(ganache.provider());
 
 let accounts;
 let inbox;
-
+let INITIAL_MESSAGE = 'Hi There!';
 beforeEach(async () => {
     //Get a List of all accounts async
     accounts = await web3.eth.getAccounts();
@@ -17,7 +17,7 @@ beforeEach(async () => {
 
     //Use one of those account to deploy the contract
     inbox = await new web3.eth.Contract(AbiInterface)
-            .deploy({data: ByteCodeObject, arguments: ['Hi There!']})
+            .deploy({data: ByteCodeObject, arguments: [INITIAL_MESSAGE]})
             .send({from: accounts[0], gas: '1000000'});
 });
 
@@ -28,4 +28,9 @@ it('describes accounts', () => {
     //Assert deployment and Validate address is assigned to contract we have deployed
     assert.ok(inbox.options.address);
     console.log(inbox.options.address);
+});
+
+it('has a default message', async() => {
+    const message = await inbox.methods.message().call();
+    assert.equal(message, INITIAL_MESSAGE);
 });

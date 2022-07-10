@@ -22,6 +22,10 @@ beforeEach(async () => {
 });
 
 it('describes accounts', () => {
-    console.log('Etherium Accounts = ', accounts);
-    console.log('Inbox Account = ', inbox);
+    // console.log('Etherium Accounts = ', accounts);
+    // console.log('Inbox Account = ', inbox);
+
+    //Assert deployment and Validate address is assigned to contract we have deployed
+    assert.ok(inbox.options.address);
+    console.log(inbox.options.address);
 });

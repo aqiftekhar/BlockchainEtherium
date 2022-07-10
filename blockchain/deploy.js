@@ -39,3 +39,6 @@ const deploy = async () => {
 deploy();
 
 //To run, node deploy.js
+
+// Attempting to deploy from account 0x1D36B34362C6793B0Ce6f95E40A172E931d98291
+// Contract deployed to |  0x5f1367895a0F2B63279dd59241aCC2097D3E9357

@@ -33,7 +33,7 @@ const deploy = async () => {
     console.log('Contract deployed to | ',result.options.address);
 
     //To prevent a hanging deployment, stop provider engine
-    provider.engine.stop();
+    provider.engine.stop(); 
 };
 
 deploy();

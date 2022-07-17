@@ -32,7 +32,7 @@ describe('Lottery Contract', () => {
             from: accounts[0]
         });
 
-        assert.equal(3, players.length);
+        assert.equal(1, players.length);
         assert.equal(accounts[0], players[0]);
     });
 

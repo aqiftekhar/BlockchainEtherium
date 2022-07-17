@@ -17,7 +17,6 @@ const provider = new HDWalletProvider(
 );
 
 const web3 = new Web3(provider);
-let INITIAL_MESSAGE = 'Hi There!';
 
 const deploy = async () => {
     //Get list of accounts.
@@ -27,7 +26,7 @@ const deploy = async () => {
 
     //Deploy Contract with initial arguments
     const result =  await new web3.eth.Contract(AbiInterface)
-                    .deploy({data: ByteCodeObject, arguments: [INITIAL_MESSAGE]})
+                    .deploy({data: ByteCodeObject})
                     .send({from: accounts[0], gas: '1000000'});
 
     console.log('Contract deployed to | ',result.options.address);

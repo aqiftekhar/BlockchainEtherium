@@ -75,10 +75,22 @@ describe('Lottery Contract', () => {
                 from: accounts[0],
                 value: 10
             });
-            assert(false);      
+            assert(false); //Should be Failed
         } catch (error) {
             assert(error);
         }
 
     });
+
+    //Validate only users with manager rights can pick the winner
+    it('only managers can pick winner', async () => {
+        try {
+            await lottery.methods.pickWinner().send({
+                from: accounts[1] //Account 1 is not Manager
+            })
+            assert(false); //Should be Failed
+        } catch (error) {
+            assert(error);
+        }
+    })
 })

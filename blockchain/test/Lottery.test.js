@@ -21,9 +21,19 @@ describe('Lottery Contract', () => {
         //Validate if contract is deployed successfully!
         assert.ok(lottery.options.address);
     });
-    it('allowed one account to enter', async () => {
+    it('allow multiple accounts to enter', async () => {
         await lottery.methods.enter().send({
             from: accounts[0],
+            value: web3.utils.toWei('0.02', 'ether')
+        });
+
+        await lottery.methods.enter().send({
+            from: accounts[1],
+            value: web3.utils.toWei('0.02', 'ether')
+        });
+
+        await lottery.methods.enter().send({
+            from: accounts[2],
             value: web3.utils.toWei('0.02', 'ether')
         });
         
@@ -31,8 +41,10 @@ describe('Lottery Contract', () => {
             from: accounts[0]
         });
 
-        assert.equal(1, players.length);
+        assert.equal(3, players.length);
         assert.equal(accounts[0], players[0]);
+        assert.equal(accounts[1], players[1]);
+        assert.equal(accounts[2], players[2]);
 
     })
 })
